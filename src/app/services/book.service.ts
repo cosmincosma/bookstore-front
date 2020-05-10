@@ -7,8 +7,8 @@ export class BookService {
     baseUrl = 'http://localhost:8080/api';
     constructor(private httpClient: HttpClient){}
 
-    addBook(book){
-        return this.httpClient.post(this.baseUrl + "/books", book);
+    countBooks(){
+        return this.httpClient.get(this.baseUrl + "/books/count");
     }
 
     getBook(id){
@@ -19,8 +19,8 @@ export class BookService {
         return this.httpClient.get(this.baseUrl + "/books");
     }
 
-    countBooks(){
-        return this.httpClient.get(this.baseUrl + "/books/count");
+    addBook(book){
+        return this.httpClient.post(this.baseUrl + "/books", book);
     }
 
 }
