@@ -1,0 +1,65 @@
+<h3>Add a new book</h3>
+
+<form class="mt-4" (ngSubmit)="addBook()">
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label" style="font-weight: bold;">Title</label>
+        <div class="col-10">
+            <input class="form-control" type="text" [(ngModel)]="book.title" name="title"/>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label" style="font-weight: bold;">Description</label>
+        <div class="col-10">
+            <textarea class="form-control" rows="3" [(ngModel)]="book.description" name="description"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label" style="font-weight: bold;">Publication date</label>
+        <div class="col-10">
+            <input class="form-control" type="text" [(ngModel)]="book.publicationDate" name="publicationDate"/>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label" style="font-weight: bold;">Cost</label>
+        <div class="col-10">          
+            <input class="form-control" type="text" [(ngModel)]="book.cost" name="cost">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label" style="font-weight: bold;">Number of pages</label>
+        <div class="col-10">
+            <input class="form-control" type="text" [(ngModel)]="book.numberOfPages" name="numberOfPages">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label" style="font-weight: bold;">Image URL</label>
+        <div class="col-10">
+            <input class="form-control" type="url" [(ngModel)]="book.imageURL" name="imageURL">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label" style="font-weight: bold;">Language</label>
+        <div class="col-10">
+            <select class="form-control" [(ngModel)]="book.language" name="language">
+                <option value="" selected disabled hidden>Select</option>
+                <option value="0">ROMANIAN</option>
+                <option value="1">ENGLISH</option>
+                <option value="2">ITALIAN</option>
+                <option value="3">SPANISH</option>
+                <option value="4">FRENCH</option>
+            </select>
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary mt-4">Add</button>
+        <a class="btn btn-secondary ml-2 mt-4" [routerLink]="['/book-list']" role="button">Cancel</a>
+    </div>
+
+</form>
