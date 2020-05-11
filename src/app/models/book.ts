@@ -9,7 +9,7 @@ export class Book {
     language: Book.LanguageEnum;
     isbn: string;
     imageURL: string;
-
+    availability: Book.AvailabilityEnum
 }
 export namespace Book {
     export enum LanguageEnum {

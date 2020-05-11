@@ -9,6 +9,7 @@ import { switchMap } from 'rxjs/operators';
   selector: 'bs-book-details',
   templateUrl: './book-details.component.html',
   styles: [
+    "src/styles.css"
   ]
 })
 export class BookDetailsComponent implements OnInit {
