@@ -12,7 +12,7 @@ export class BookCreateFormComponent implements OnInit {
   book = {
     title: "Example",
     description: "Description",
-    publicationDate: "22-10-2022",
+    publicationYear: 2222,
     numberOfPages: 200,
     cost: 33.00,
     language: "English",
