@@ -1,4 +1,4 @@
-<h3>Add a new book</h3>
+<h2>Add a new book</h2>
 
 
 <form class="mt-4" (ngSubmit)="addBook()">
@@ -68,3 +68,21 @@
     </div>
 
 </form>
+
+<button hidden=true id="openSuccesModalButton" data-toggle="modal" data-target="#modalAddSucces"></button>
+    
+<div class="modal fade" id="modalAddSucces" >
+    <div  class="modal-dialog">
+        <div class="modal-content">   
+            <div class="modal-header">
+                <h4 class="modal-title">The book has been successfully added!</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div> 
+            <div class="modal-body" style="font-weight:bold">Generated ISBN: <mark>{{generatedIsbn}}</mark></div>   
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>    
+        </div>
+    </div>
+</div>
+

@@ -14,6 +14,7 @@ export class BookCreateFormComponent implements OnInit {
 
   book: any = {};
   validationErrors = {};
+  generatedIsbn: any;
 
   constructor(private router: Router, private bookService : BookService) { }
 
@@ -25,7 +26,14 @@ export class BookCreateFormComponent implements OnInit {
       (response) => {
         console.log(response);
         if(response["book_id"]){
-          //TODO: succes dialog
+          document.getElementById("openSuccesModalButton").click();
+          this.resetForms();
+          this.generatedIsbn = response["generated_isbn"];
+
+          /*setTimeout(() => {
+            this.router.navigate(['/book-details/',  response["book_id"]]);
+          }, 2000);*/
+
         }
       },
       (error) => {
@@ -35,6 +43,11 @@ export class BookCreateFormComponent implements OnInit {
         }
       }
     );
+  }
+
+  resetForms() {
+    this.book = {};
+    this.validationErrors = {};
   }
 
 }

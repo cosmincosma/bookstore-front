@@ -1,11 +1,16 @@
-<h3>List of all books ({{numberOfBooks}})</h3>
+<div *ngIf=areBooks>
+    <h2>List of all books ({{numberOfBooks}})</h2>
 
-<ul class="list-unstyled">
-    <li class="media my-4" *ngFor="let book of books">
-        <img class="d-flex mr-3 img-thumbnail" src="{{book?.imageURL}}" width="150px" height="200px"/>
-        <div>
-            <h4 class="mt-0 mb-1"><a [routerLink]="['/book-details', book.id]">{{book?.title}}</a></h4>
-            {{book?.description}}
-        </div>
-    </li>
-</ul>
+    <ul class="list-unstyled">
+        <li class="media my-4" *ngFor="let book of books">
+            <img class="d-flex mr-3 img-thumbnail" src="{{book?.imageURL}}" onerror="this.src='assets/images/book-image-not-available.png'" width="150px" height="200px"/>
+            <div>
+                <h4 class="mt-0 mb-1"><a [routerLink]="['/book-details', book.id]">{{book?.title}}</a></h4>
+                {{book?.description}}
+            </div>
+        </li>
+    </ul>
+</div>
+
+<img *ngIf=!areBooks class="noBooks" src="assets/images/no_books.png">
+

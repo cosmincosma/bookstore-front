@@ -6,12 +6,14 @@ import { Book } from '../models/book';
   selector: 'bs-book-list',
   templateUrl: './book-list.component.html',
   styles: [
+    "src/styles.css"
   ]
 })
 export class BookListComponent implements OnInit {
 
   numberOfBooks : number;
-  books;
+  books : any;
+  areBooks : boolean = false;
 
 
   constructor(private bookService : BookService) { }
@@ -20,6 +22,14 @@ export class BookListComponent implements OnInit {
     this.bookService.countBooks().subscribe(
       resp => {
         this.numberOfBooks = resp["count"];
+        if(resp["count"] != 0 || resp["count"] != null){
+            this.areBooks = true;
+        }
+      },
+      (error) => {
+        if (error) {
+          console.log(error.error)
+        }
       }
     )
 
@@ -27,10 +37,13 @@ export class BookListComponent implements OnInit {
       resp => {
         this.books = resp;
       },
-      err => {
-        
+      (error) => {
+        if (error) {
+          console.log(error.error)
+        }
       }
     )
+
   }
   
 

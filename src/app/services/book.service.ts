@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { JsonPipe } from '@angular/common';
 
 @Injectable()
 export class BookService {
@@ -22,6 +23,26 @@ export class BookService {
     addBook(book){
         return this.httpClient.post(this.baseUrl + "/books", book);
     }
+
+    deleteBook(id, isbnData){
+        const options = {
+            headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+            }),
+            body : JSON.stringify(isbnData)
+          };
+          
+        return this.httpClient.delete(this.baseUrl + "/books/book/" + id, options);
+    }
+
+    updateBookAvailability(id, availability){
+        return this.httpClient.patch(this.baseUrl + "/books/book/" + id + "/availability", availability);
+    }
+
+
+
+
+    
 
 }
 

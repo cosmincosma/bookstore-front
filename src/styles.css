@@ -5,7 +5,23 @@
     margin-top: 10px;
 }
 
-.enums{
-    text-transform: lowercase;
-    display: inline-block;
+.availabilityIcon{
+    width: 30px;
+    height: 30px;
+}
+
+.notFound {
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+.noBooks {
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
