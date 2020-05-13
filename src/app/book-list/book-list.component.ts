@@ -14,7 +14,9 @@ export class BookListComponent implements OnInit {
   numberOfBooks : number;
   books : Array<Book> = new Array<Book>();
   areNoBooks : boolean = false;
-
+  currentPage = 1;
+  itemsPerPage = 4;
+  pageSize: number;
 
   constructor(private bookService : BookService) { }
 
@@ -45,6 +47,13 @@ export class BookListComponent implements OnInit {
     )
 
   }
-  
 
+  public onPageChange(pageNum: number): void {
+    this.pageSize = this.itemsPerPage*(pageNum - 1);
+  }
+  
+  public changePagesize(num: number): void {
+    this.itemsPerPage = this.pageSize + num;
+  }
+  
 }
