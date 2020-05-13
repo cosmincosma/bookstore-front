@@ -14,7 +14,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class BookDetailsComponent implements OnInit {
 
-  book : any;
+  book : Book = new Book();
   available : boolean = false;
   isbnData: any = {};
   validationMessage: string;
@@ -28,7 +28,7 @@ export class BookDetailsComponent implements OnInit {
     .pipe(map(params => params['bookId']))
     .pipe(switchMap(id => this.bookService.getBook(id)))
     .subscribe(
-      resp => {
+      (resp : Book) => {
         console.log(resp);
         this.book = resp;
 

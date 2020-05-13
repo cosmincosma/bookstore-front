@@ -1,0 +1,41 @@
+<table class="table" *ngIf=!areNoBooks>
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Value</th>
+        <th scope="col">Book(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Number of books</th>
+        <td>{{statistics.numberOfBooks}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Number of available books</th>
+        <td>{{statistics.numberOfAvailableBooks}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Oldest book(s)</th>
+        <td>{{statistics.oldestBooks['value']}}</td>
+        <td>{{statistics.oldestBooks['books']}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Newest book(s)</th>
+        <td>{{statistics.newestBooks['value']}}</td>
+        <td>{{statistics.newestBooks['books']}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Most expensive book(s)</th>
+        <td>{{statistics.mostExpensiveBooks['value']}}</td>
+        <td>{{statistics.mostExpensiveBooks['books']}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Most cheapest book(s)</th>
+        <td>{{statistics.cheapestBooks['value']}}</td>
+        <td>{{statistics.cheapestBooks['books']}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <img *ngIf=areNoBooks class="noBooks" src="assets/images/no_books.png">

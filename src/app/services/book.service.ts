@@ -39,6 +39,10 @@ export class BookService {
         return this.httpClient.patch(this.baseUrl + "/books/book/" + id + "/availability", availability);
     }
 
+    getStatistics() {
+        return this.httpClient.get(this.baseUrl + "/books/statistics");
+    }
+
 
 
 

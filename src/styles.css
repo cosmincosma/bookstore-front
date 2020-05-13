@@ -1,8 +1,27 @@
+.description {
+    font-style:italic;
+}
+
 .errorMessage{
     color: #d74c4c;
     font-weight: bold;
     margin-left: 15px;
     margin-top: 10px;
+}
+
+.languageIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.languageText {
+    margin-left: 5px;
+    text-transform: lowercase;
+    display: inline-block;
+}
+
+.languageText:first-letter {
+    text-transform: uppercase;
 }
 
 .availabilityIcon{
@@ -24,4 +43,8 @@
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+}
+
+h2 {
+    font-family: "Comic Sans MS", cursive, sans-serif;
 }

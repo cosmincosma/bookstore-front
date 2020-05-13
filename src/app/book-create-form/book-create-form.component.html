@@ -14,7 +14,7 @@
     <div class="form-group row">
         <label class="col-2 col-form-label" style="font-weight: bold;">Description*</label>
         <div class="col-10">
-            <textarea class="form-control" rows="3" [(ngModel)]="book.description" name="description"></textarea>
+            <textarea class="form-control" rows="4" [(ngModel)]="book.description" name="description"></textarea>
         </div>
         <div *ngIf="validationErrors['description']" class="errorMessage">{{validationErrors['description']}}</div>
     </div>
@@ -52,7 +52,7 @@
     <div class="form-group row">
         <label class="col-2 col-form-label" style="font-weight: bold;">Language*</label>
         <div class="col-10">
-            <select class="form-control" [(ngModel)]="book.language" name="language">
+            <select class="browser-default custom-select custom-select-lg mb-3 colorful-select dropdown-primary" [(ngModel)]="book.language" name="language">
                 <option value="0">ROMANIAN</option>
                 <option value="1">ENGLISH</option>
                 <option value="2">ITALIAN</option>

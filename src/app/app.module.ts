@@ -10,6 +10,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { BookCreateFormComponent } from './book-create-form/book-create-form.component';
 import { BookService } from './services/book.service';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BookListComponent,
     BookDetailsComponent,
     BookCreateFormComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,

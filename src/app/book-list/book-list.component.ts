@@ -12,8 +12,8 @@ import { Book } from '../models/book';
 export class BookListComponent implements OnInit {
 
   numberOfBooks : number;
-  books : any;
-  areBooks : boolean = false;
+  books : Array<Book> = new Array<Book>();
+  areNoBooks : boolean = false;
 
 
   constructor(private bookService : BookService) { }
@@ -22,8 +22,8 @@ export class BookListComponent implements OnInit {
     this.bookService.countBooks().subscribe(
       resp => {
         this.numberOfBooks = resp["count"];
-        if(resp["count"] != 0 || resp["count"] != null){
-            this.areBooks = true;
+        if(resp["count"] == 0) {
+            this.areNoBooks = true;
         }
       },
       (error) => {
@@ -34,7 +34,7 @@ export class BookListComponent implements OnInit {
     )
 
     this.bookService.getAllBooks().subscribe(
-      resp => {
+      (resp: Array<Book>) => {
         this.books = resp;
       },
       (error) => {

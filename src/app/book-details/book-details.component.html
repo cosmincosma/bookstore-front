@@ -5,42 +5,48 @@
     <div class="form-group row">
         <label class="col-2 col-form-label" style="font-weight: bold;">Title</label>
         <div class="col-10">
-            <input class="form-control" type="text" value="{{book?.title}}" name="title" readonly/>
+            <input class="form-control" type="text" value="{{book.title}}" name="title" readonly/>
         </div>
     </div>
     
     <div class="form-group row">
         <label class="col-2 col-form-label" style="font-weight: bold;">Description</label>
         <div class="col-10">
-            <textarea class="form-control" rows="4" type="text" name="description" readonly>{{book?.description}}</textarea>
+            <textarea class="form-control" rows="4" type="text" name="description" readonly>{{book.description}}</textarea>
         </div>
     </div>
     
     <div class="form-group row">
         <label class="col-2 col-form-label" style="font-weight: bold;">Publication Year</label>
         <div class="col-10">
-            <input class="form-control" type="text" value="{{book?.publicationYear}}" name="publicationYear" readonly/>
+            <input class="form-control" type="text" value="{{book.publicationYear}}" name="publicationYear" readonly/>
         </div>
     </div>
     
     <div class="form-group row">
         <label class="col-2 col-form-label" style="font-weight: bold;">Number of pages</label>
         <div class="col-10">
-            <input class="form-control" type="text" value="{{book?.numberOfPages}}" name="numberOfPages"  readonly/>
+            <input class="form-control" type="text" value="{{book.numberOfPages}}" name="numberOfPages"  readonly/>
         </div>
     </div>
     
     <div class="form-group row">
         <label class="col-2 col-form-label" style="font-weight: bold;">Cost</label>
         <div class="col-10">
-            <input class="form-control" type="text" value="{{book?.cost}} lei" name="cost" readonly/>
+            <input class="form-control" type="text" value="{{book.cost}} lei" name="cost" readonly/>
         </div>
     </div>
     
-    <div class="form-group row">
+    <div class="form-group row language">
         <label class="col-2 col-form-label" style="font-weight: bold;">Language</label>
         <div class="col-10">
-            <input class="form-control" type="text" value="{{book?.language}}" name="language" readonly/>
+            <!--<input class="form-control" type="text" value="{{book?.language}}" name="language" readonly/> -->
+            <img *ngIf="book?.language === 'ROMANIAN'" class="languageIcon" src="assets/images/languages/romanian.png" alt="" title="Romanian">
+            <img *ngIf="book?.language === 'ENGLISH'" class="languageIcon" src="assets/images/languages/english.png" alt="" title="English">
+            <img *ngIf="book?.language === 'ITALIAN'" class="languageIcon" src="assets/images/languages/italian.png" alt="" title="Italian">
+            <img *ngIf="book?.language === 'SPANISH'" class="languageIcon" src="assets/images/languages/spanish.png" alt="" title="Spanish">
+            <img *ngIf="book?.language === 'FRENCH'" class="languageIcon" src="assets/images/languages/french.png" alt="" title="French">
+            <span class="languageText">{{book.language}}</span>
         </div>
     </div>
     
@@ -48,8 +54,8 @@
         <label class="col-2 col-form-label" style="font-weight: bold;">Availability</label>
         <div class="col-10">
             <!-- <input class="form-control" type="text" value="{{book?.availability}}" name="availability" readonly/> -->
-            <img *ngIf=available class="availabilityIcon" (click)="makeTheBookUnavailable()" src="assets/images/available.png" title="Click to make the book unavailable">
             <img *ngIf=!available class="availabilityIcon" (click)="makeTheBookAvailable()" src="assets/images/not_available.png" title="Click to make the book available">
+            <img *ngIf=available class="availabilityIcon" (click)="makeTheBookUnavailable()" src="assets/images/available.png" title="Click to make the book not available">
         </div>
     </div>
     
