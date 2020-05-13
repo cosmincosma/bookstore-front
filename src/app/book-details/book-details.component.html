@@ -1,6 +1,6 @@
-<h3>Details of {{book.title}}</h3>
+<h2>Details of {{book?.title}}</h2>
 
-<form class="mt-4" (ngSubmit)="deleteBook()">
+<form class="mt-4">
 
     <div class="form-group row">
         <label class="col-2 col-form-label" style="font-weight: bold;">Title</label>
@@ -17,9 +17,9 @@
     </div>
     
     <div class="form-group row">
-        <label class="col-2 col-form-label" style="font-weight: bold;">Publication date</label>
+        <label class="col-2 col-form-label" style="font-weight: bold;">Publication Year</label>
         <div class="col-10">
-            <input class="form-control" type="text" value="{{book.publicationDate}}" name="publicationDate" readonly/>
+            <input class="form-control" type="text" value="{{book.publicationYear}}" name="publicationYear" readonly/>
         </div>
     </div>
     
@@ -37,26 +37,57 @@
         </div>
     </div>
     
-    <div class="form-group row">
+    <div class="form-group row language">
         <label class="col-2 col-form-label" style="font-weight: bold;">Language</label>
         <div class="col-10">
-            <input class="form-control" type="text" value="{{book.language}}" name="language" readonly/>
+            <!--<input class="form-control" type="text" value="{{book?.language}}" name="language" readonly/> -->
+            <img *ngIf="book?.language === 'ROMANIAN'" class="languageIcon" src="assets/images/languages/romanian.png" alt="" title="Romanian">
+            <img *ngIf="book?.language === 'ENGLISH'" class="languageIcon" src="assets/images/languages/english.png" alt="" title="English">
+            <img *ngIf="book?.language === 'ITALIAN'" class="languageIcon" src="assets/images/languages/italian.png" alt="" title="Italian">
+            <img *ngIf="book?.language === 'SPANISH'" class="languageIcon" src="assets/images/languages/spanish.png" alt="" title="Spanish">
+            <img *ngIf="book?.language === 'FRENCH'" class="languageIcon" src="assets/images/languages/french.png" alt="" title="French">
+            <span class="languageText">{{book.language}}</span>
         </div>
     </div>
     
     <div class="form-group row">
         <label class="col-2 col-form-label" style="font-weight: bold;">Availability</label>
         <div class="col-10">
-            <input class="form-control" type="text" value="{{book.availability}}" name="availability" readonly/>
+            <!-- <input class="form-control" type="text" value="{{book?.availability}}" name="availability" readonly/> -->
+            <img *ngIf=!available class="availabilityIcon" (click)="makeTheBookAvailable()" src="assets/images/not_available.png" title="Click to make the book available">
+            <img *ngIf=available class="availabilityIcon" (click)="makeTheBookUnavailable()" src="assets/images/available.png" title="Click to make the book not available">
         </div>
     </div>
     
     <div class="text-center">
-        <button type="submit" class="btn btn-primary mt-4">Delete</button>
-        <button type="button" class="btn btn-primary ml-2 mt-4" >Update availability</button>
+        <button type="button" class="btn btn-danger mt-4" data-toggle="modal" data-target="#modalDelete">Delete</button>
+        <button *ngIf=available type="button" class="btn btn-primary ml-2 mt-4" (click)="makeTheBookUnavailable()">Make it unavailable</button>
+        <button *ngIf=!available type="button" class="btn btn-primary ml-2 mt-4" (click)="makeTheBookAvailable()">Make it available</button>
         <a class="btn btn-secondary ml-2 mt-4" [routerLink]="['/book-list']" role="button">Back</a>    
     </div>
-    
-
 </form>
+
+
+    
+<div class="modal fade" id="modalDelete" >
+    <div  class="modal-dialog modal-lg">
+        <div class="modal-content">   
+            <div class="modal-header">
+                <h4 class="modal-title">To delete the book, enter its ISBN</h4>
+                <button type="button" class="close" data-dismiss="modal" (click)="resetForms()">&times;</button>
+            </div> 
+            <div class="modal-body" style="font-weight:bold">
+                <input class="form-control" type="text" [(ngModel)]="isbnData.isbn" name="isbn"/>
+                <div *ngIf="validationMessage" class="errorMessage">{{validationMessage['isbn']}}</div>
+                <div *ngIf="validationMessage" class="errorMessage">{{validationMessage['message']}}</div>
+            </div>   
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="deleteBook()">Delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="resetForms()">Close</button>
+                <button hidden=true id="modalDeleteButton" data-toggle="modal" data-dismiss="modal" data-target="#modalDelete" (click)="resetForms()"></button>
+            </div>    
+        </div>
+    </div>
+</div>
+
 

@@ -1,26 +1,30 @@
-<h3>Add a new book</h3>
+<h2>Add a new book</h2>
+
 
 <form class="mt-4" (ngSubmit)="addBook()">
 
     <div class="form-group row">
-        <label class="col-2 col-form-label" style="font-weight: bold;">Title</label>
+        <label class="col-2 col-form-label" style="font-weight: bold;">Title*</label>
         <div class="col-10">
             <input class="form-control" type="text" [(ngModel)]="book.title" name="title"/>
         </div>
+        <div *ngIf="validationErrors['title']" class="errorMessage">{{validationErrors['title']}}</div>
     </div>
 
     <div class="form-group row">
-        <label class="col-2 col-form-label" style="font-weight: bold;">Description</label>
+        <label class="col-2 col-form-label" style="font-weight: bold;">Description*</label>
         <div class="col-10">
-            <textarea class="form-control" rows="3" [(ngModel)]="book.description" name="description"></textarea>
+            <textarea class="form-control" rows="4" [(ngModel)]="book.description" name="description"></textarea>
         </div>
+        <div *ngIf="validationErrors['description']" class="errorMessage">{{validationErrors['description']}}</div>
     </div>
 
     <div class="form-group row">
-        <label class="col-2 col-form-label" style="font-weight: bold;">Publication date</label>
+        <label class="col-2 col-form-label" style="font-weight: bold;">Publication year</label>
         <div class="col-10">
-            <input class="form-control" type="text" [(ngModel)]="book.publicationDate" name="publicationDate"/>
+            <input class="form-control" type="text" [(ngModel)]="book.publicationYear" name="publicationYear"/>
         </div>
+        <div *ngIf="validationErrors['publicationYear']" class="errorMessage">{{validationErrors['publicationYear']}}</div>
     </div>
 
     <div class="form-group row">
@@ -31,10 +35,11 @@
     </div>
 
     <div class="form-group row">
-        <label class="col-2 col-form-label" style="font-weight: bold;">Number of pages</label>
+        <label class="col-2 col-form-label" style="font-weight: bold;">Number of pages*</label>
         <div class="col-10">
             <input class="form-control" type="text" [(ngModel)]="book.numberOfPages" name="numberOfPages">
         </div>
+        <div *ngIf="validationErrors['numberOfPages']" class="errorMessage">{{validationErrors['numberOfPages']}}</div>
     </div>
 
     <div class="form-group row">
@@ -45,10 +50,9 @@
     </div>
 
     <div class="form-group row">
-        <label class="col-2 col-form-label" style="font-weight: bold;">Language</label>
+        <label class="col-2 col-form-label" style="font-weight: bold;">Language*</label>
         <div class="col-10">
-            <select class="form-control" [(ngModel)]="book.language" name="language">
-                <option value="" selected disabled hidden>Select</option>
+            <select class="browser-default custom-select custom-select-lg mb-3 colorful-select dropdown-primary" [(ngModel)]="book.language" name="language">
                 <option value="0">ROMANIAN</option>
                 <option value="1">ENGLISH</option>
                 <option value="2">ITALIAN</option>
@@ -56,6 +60,7 @@
                 <option value="4">FRENCH</option>
             </select>
         </div>
+        <div *ngIf="validationErrors['language']" class="errorMessage">{{validationErrors['language']}}</div>
     </div>
     <div class="text-center">
         <button type="submit" class="btn btn-primary mt-4">Add</button>
@@ -63,3 +68,21 @@
     </div>
 
 </form>
+
+<button hidden=true id="openSuccesModalButton" data-toggle="modal" data-target="#modalAddSucces"></button>
+    
+<div class="modal fade" id="modalAddSucces" >
+    <div  class="modal-dialog">
+        <div class="modal-content">   
+            <div class="modal-header">
+                <h4 class="modal-title">The book has been successfully added!</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div> 
+            <div class="modal-body" style="font-weight:bold">Generated ISBN: <mark>{{generatedIsbn}}</mark></div>   
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>    
+        </div>
+    </div>
+</div>
+

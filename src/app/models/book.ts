@@ -3,13 +3,13 @@ export class Book {
     id: number;
     title: string;
     description: string;
-    publicationDate: Date;
+    publicationYear: number;
     numberOfPages: number;
     cost: number;
     language: Book.LanguageEnum;
     isbn: string;
     imageURL: string;
-
+    availability: Book.AvailabilityEnum
 }
 export namespace Book {
     export enum LanguageEnum {
