@@ -11,6 +11,7 @@ import { BookCreateFormComponent } from './book-create-form/book-create-form.com
 import { BookService } from './services/book.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { StatisticsComponent } from './statistics/statistics.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    NgbModule 
   ],
   providers: [BookService],
   bootstrap: [AppComponent]
